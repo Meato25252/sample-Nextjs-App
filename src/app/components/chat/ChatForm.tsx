@@ -6,7 +6,7 @@ import { sendMessageAtom } from "@/common/store/chat/chat";
 
 export const ChatForm: React.FC = () => {
     const [message, setMessage] = useState<string>("");  // 入力ボックスのテキストを保持
-    // const [, setSender] = useRecoilState(sendMessageAtom);  // ユーザーが送信したアクションをグローバルに保管
+    const [, setSender] = useRecoilState(sendMessageAtom);  // ユーザーが送信したアクションをグローバルに保管
 
     const sendMessage = async () => {
         if (!message) return;
@@ -24,7 +24,7 @@ export const ChatForm: React.FC = () => {
             });
 
             const data = await response.json();
-            // setSender(true);  // これでユーザーが送信したというアクションをChatMessageに伝える
+            setSender(true);  // これでユーザーが送信したというアクションをChatMessageに伝える
         } catch (err) {
             console.error(err);
         }

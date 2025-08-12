@@ -13,25 +13,25 @@ type ChatMessage = {
 
 export const ChatMessage: React.FC = () => {
     const [inputMessage, setInputMessage] = useState<ChatMessage[]>([]);
-    // const [sender, setSender] = useRecoilState(sendMessageAtom);
+    const [sender, setSender] = useRecoilState(sendMessageAtom);
 
-    // useEffect(() => {
-    //     const getMessage = async () => {
-    //         try {
-    //             const response = await fetch("/api/chat", {
-    //                 method: "GET",
-    //             });
+    useEffect(() => {
+        const getMessage = async () => {
+            try {
+                const response = await fetch("/api/chat", {
+                    method: "GET",
+                });
 
-    //             const data = await response.json();
-    //             setInputMessage(data);
-    //         } catch (err) {
-    //             console.error(err);
-    //         }
-    //     };
+                const data = await response.json();
+                setInputMessage(data);
+            } catch (err) {
+                console.error(err);
+            }
+        };
 
-    //     getMessage();
-    //     setSender(false);
-    // }, [sender, setSender]);
+        getMessage();
+        setSender(false);
+    }, [sender, setSender]);
 
     return (
         <div style={{ padding: "30px 20px", height: "100%" }}>
