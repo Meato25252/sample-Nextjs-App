@@ -40,6 +40,8 @@ export const ChatForm: React.FC = () => {
                 width: "100%",
                 padding: 20,
                 background: "#fff",
+                boxSizing: "border-box",
+                right: 0,
             }}
         >
             <div style={{ display: "flex", gap: 10 }}>
