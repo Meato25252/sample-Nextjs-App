@@ -6,31 +6,31 @@ import { sendMessageAtom } from "@/common/store/chat/chat";
 
 export const ChatForm: React.FC = () => {
     const [message, setMessage] = useState<string>("");  // 入力ボックスのテキストを保持
-    const [, setSender] = useRecoilState(sendMessageAtom);  // ユーザーが送信したアクションをグローバルに保管
+    // const [, setSender] = useRecoilState(sendMessageAtom);  // ユーザーが送信したアクションをグローバルに保管
 
-    const sendMessage = async () => {
-        if (!message) return;
+    // const sendMessage = async () => {
+    //     if (!message) return;
 
-        try {
-            const response = await fetch("/api/chat", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    role: "user",
-                    message: message,
-                }),
-            });
+    //     try {
+    //         const response = await fetch("/api/chat", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 role: "user",
+    //                 message: message,
+    //             }),
+    //         });
 
-            const data = await response.json();
-            setSender(true);  // これでユーザーが送信したというアクションをChatMessageに伝える
-        } catch (err) {
-            console.error(err);
-        }
+    //         const data = await response.json();
+    //         setSender(true);  // これでユーザーが送信したというアクションをChatMessageに伝える
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
 
-        setMessage("");
-    };
+    //     setMessage("");
+    // };
 
     return (
         <div
@@ -61,7 +61,7 @@ export const ChatForm: React.FC = () => {
                     onKeyDown={(e) => {
                         if (e.key === "Enter" && e.nativeEvent.isComposing === false) {
                             e.preventDefault();
-                            sendMessage();
+                            // sendMessage();
                         }
                     }}
                 />
@@ -74,7 +74,7 @@ export const ChatForm: React.FC = () => {
                         border: "none",
                     }}
                     onClick={() => {
-                        sendMessage();
+                        // sendMessage();
                     }}
                 >
                     送信
